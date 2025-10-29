@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uz" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O'quv Markazi | Premium Kurslar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* [Siz bergan CSS – to‘liq saqlangan] */
+    :root { --color-primary: #667eea; --color-primary-dark: #5a6fd8; --color-primary-light: #764ba2; --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); --primary-hover-gradient: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%); --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); --shine-gradient: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%); --color-neutral-50: #f8fafc; --color-neutral-100: #f1f5f9; --color-neutral-200: #e2e8f0; --color-neutral-300: #cbd5e1; --color-neutral-400: #94a3b8; --color-neutral-500: #64748b; --color-neutral-600: #475569; --color-neutral-700: #334155; --color-neutral-800: #1e293b; --color-neutral-900: #0f172a; --color-white: #ffffff; --color-black: #000000; --text-color: #e2e8f0; --text-secondary: #94a3b8; --text-muted: #64748b; --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-tertiary: #334155; --border-color: #475569; --glass-bg: rgba(30, 41, 59, 0.8); --font-family: 'Inter', system-ui, -apple-system, sans-serif; --font-size-sm: 0.875rem; --font-size-base: 1rem; --font-size-lg: 1.125rem; --font-weight-normal: 400; --font-weight-medium: 500; --font-weight-semibold: 600; --spacing-xs: 0.25rem; --spacing-sm: 0.5rem; --spacing-md: 1rem; --spacing-lg: 1.5rem; --spacing-xl: 2rem; --spacing-2xl: 3rem; --nav-height: 5rem; --nav-height-mobile: 4rem; --container-max-width: 75rem; --border-radius: 0.75rem; --border-radius-sm: 0.375rem; --border-radius-full: 9999px; --border-radius-lg: 1rem; --border-glow: rgba(102, 126, 234, 0.3); --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15); --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.3); --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.5); --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3); --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.5); --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.3); --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2); --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1); --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1); --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1); --backdrop-blur: blur(20px); --z-dropdown: 50; --z-sticky: 100; --z-overlay: 200; --z-modal: 300; --card-bg: rgba(30, 41, 59, 0.6); --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { line-height: 1.5; -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-family); line-height: 1.6; color: var(--text-color); background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    /* [Qolgan CSS – siz bergan – to‘liq saqlangan] */
+    .navbar { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--glass-bg); backdrop-filter: var(--backdrop-blur); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-medium); transition: all var(--transition-base); }
+    .navbar.scrolled { box-shadow: var(--shadow-heavy); background: rgba(15, 23, 42, 0.95); }
+    .nav-container { max-width: var(--container-max-width); margin: 0 auto; padding: 0 var(--spacing-md); height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand a { display: flex; align-items: center; gap: var(--spacing-sm); color: var(--text-color); font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); text-decoration: none; transition: var(--transition-fast); }
+    .nav-brand a:hover { color: var(--color-primary); }
+    .brand-text { font-weight: var(--font-weight-semibold); }
+    .nav-toggle { display: none; flex-direction: column; width: 2rem; height: 2rem; background: none; border: none; cursor: pointer; z-index: calc(var(--z-sticky) + 1); }
+    .hamburger-line { width: 100%; height: 2px; background: var(--primary-gradient); margin-bottom: 0.25rem; transition: var(--transition-base); border-radius: var(--border-radius-full); box-shadow: 0 0 5px rgba(102, 126, 234, 0.3); }
+    .hamburger-line:last-child { margin-bottom: 0; }
+    .nav-menu { display: flex; align-items: center; gap: var(--spacing-xl); }
+    .nav-list { display: flex; gap: var(--spacing-lg); list-style: none; }
+    .nav-link { padding: var(--spacing-sm) var(--spacing-md); color: var(--text-secondary); font-weight: var(--font-weight-medium); text-decoration: none; border-radius: var(--border-radius); transition: var(--transition-fast); position: relative; overflow: hidden; }
+    .nav-link::before { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--primary-gradient); transition: var(--transition-fast); transform: translateX(-50%); }
+    .nav-link:hover, .nav-link:focus { color: var(--text-color); background: rgba(102, 126, 234, 0.1); transform: translateY(-2px); }
+    .nav-link:hover::before { width: 80%; }
+    .nav-link.active { color: var(--color-primary); background: rgba(102, 126, 234, 0.15); }
+    .nav-link.active::before { width: 80%; }
+    .nav-item--dropdown { position: relative; }
+    .nav-dropdown-toggle { display: flex; align-items: center; gap: var(--spacing-xs); cursor: pointer; }
+    .dropdown-icon { transition: transform var(--transition-fast); }
+    .nav-item--dropdown[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
+    .nav-submenu { position: absolute; top: calc(100% + var(--spacing-sm)); left: 0; min-width: 12rem; background: var(--glass-bg); backdrop-filter: var(--backdrop-blur); border: 1px solid var(--border-color); border-radius: var(--border-radius); box-shadow: var(--shadow-heavy); padding: var(--spacing-sm); opacity: 0; visibility: hidden; transform: translateY(-0.5rem); transition: var(--transition-base); z-index: var(--z-dropdown); }
+    .nav-item--dropdown:hover .nav-submenu, .nav-item--dropdown:focus-within .nav-submenu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .submenu-link { display: block; padding: var(--spacing-sm) var(--spacing-md); color: var(--text-secondary); text-decoration: none; border-radius: var(--border-radius-sm); transition: var(--transition-fast); }
+    .submenu-link:hover { color: var(--text-color); background: rgba(102, 126, 234, 0.1); transform: translateX(5px); }
+    .cta-button { display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xl); background: var(--primary-gradient); color: white; text-decoration: none; font-weight: var(--font-weight-semibold); border-radius: var(--border-radius-full); box-shadow: var(--shadow-glow), var(--shadow-medium); transition: var(--transition-fast); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow), var(--shadow-heavy); }
+    .nav-overlay { display: none; }
+    @media (max-width: 640px) { .nav-toggle { display: flex; } .nav-menu { position: fixed; top: 0; right: 0; width: 100%; max-width: 20rem; height: 100vh; background: var(--glass-bg); backdrop-filter: var(--backdrop-blur); padding: var(--spacing-2xl) var(--spacing-lg); flex-direction: column; transform: translateX(100%); transition: var(--transition-base); z-index: var(--z-sticky); overflow-y: auto; } .nav-menu.active { transform: translateX(0); } .nav-overlay { display: block; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); opacity: 0; visibility: hidden; transition: var(--transition-base); z-index: calc(var(--z-sticky) - 1); } .nav-overlay.active { opacity: 1; visibility: visible; } .nav-list { flex-direction: column; width: 100%; } .nav-item { border-bottom: 1px solid var(--border-color); } .nav-link { padding: var(--spacing-md); justify-content: space-between; border-radius: 0; } .nav-submenu { position: static; box-shadow: none; border: none; background: var(--color-neutral-50); padding: 0; max-height: 0; overflow: hidden; } .nav-item--dropdown[aria-expanded="true"] .nav-submenu { max-height: 20rem; } .cta-button { width: 100%; justify-content: center; } }
+    .main-content { padding-top: var(--spacing-xl); }
+    .container { max-width: var(--container-max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+    .hero { text-align: center; padding: var(--spacing-2xl) 0; background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); border-radius: var(--border-radius); margin: var(--spacing-xl); box-shadow: var(--shadow-medium); }
+    .hero h1 { font-size: 3rem; margin-bottom: var(--spacing-md); text-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+    .hero p { font-size: var(--font-size-lg); max-width: 40rem; margin: 0 auto var(--spacing-2xl); color: var(--text-secondary); }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl); }
+    .feature { background: var(--glass-bg); backdrop-filter: var(--backdrop-blur); padding: var(--spacing-xl); border-radius: var(--border-radius); box-shadow: var(--shadow-medium); border: 1px solid var(--border-color); transition: var(--transition-fast); position: relative; overflow: hidden; }
+    .feature:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-glow), var(--shadow-heavy); }
+    .content-section { padding: var(--spacing-2xl) 0; }
+    .content-section h2 { font-size: 2rem; text-align: center; margin-bottom: var(--spacing-md); }
+    .content-section p { text-align: center; max-width: 40rem; margin: 0 auto var(--spacing-xl); color: var(--text-secondary); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-xl); }
+    .service-card { background: var(--card-bg); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-glow); border: 1px solid var(--border-glow); transition: var(--transition-smooth); position: relative; overflow: hidden; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-heavy), var(--shadow-glow); }
+    .service-icon { font-size: 3rem; margin-bottom: var(--spacing-lg); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl); }
+    .portfolio-item { background: var(--card-bg); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-glow); border: 1px solid var(--border-glow); }
+    .portfolio-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-heavy), var(--shadow-glow); }
+    .portfolio-image { height: 200px; background: var(--primary-gradient); position: relative; }
+    .placeholder-image { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold); background: rgba(0,0,0,0.3); }
+    .about-content { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-2xl); margin-top: var(--spacing-2xl); }
+    .about-text h3 { margin-bottom: var(--spacing-md); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); }
+    .stat { background: var(--card-bg); padding: var(--spacing-lg); border-radius: var(--border-radius); text-align: center; box-shadow: var(--shadow-glow); border: 1px solid var(--border-glow); }
+    .contact-content { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-2xl); margin-top: var(--spacing-2xl); }
+    .contact-form { background: var(--card-bg); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-glow); border: 1px solid var(--border-glow); }
+    .form-group { margin-bottom: var(--spacing-lg); }
+    .form-group label { display: block; margin-bottom: var(--spacing-sm); font-weight: var(--font-weight-medium); }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: var(--spacing-md); background: var(--bg-secondary); border: 1px solid var(--border-glow); border-radius: var(--border-radius); color: var(--text-color); transition: var(--transition-base); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); }
+    .submit-btn { background: var(--primary-gradient); color: white; border: none; padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--border-radius-full); font-weight: var(--font-weight-semibold); cursor: pointer; transition: var(--transition-base); box-shadow: var(--shadow-glow); position: relative; overflow: hidden; }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-heavy), var(--shadow-glow); }
+    @media (max-width: 768px) { .about-content, .contact-content { grid-template-columns: 1fr; } .about-stats { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .about-stats { grid-template-columns: 1fr; } }
+    @keyframes shine { to { left: 100%; } }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <!-- [Siz bergan navigatsiya – to‘liq saqlangan] -->
+  <header class="navbar" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Asosiy navigatsiya">
+      <div class="nav-brand">
+        <a href="#" class="brand-link" aria-label="Bosh sahifaga o'tish">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="currentColor"/>
+            <path d="M8 12h16v2H8v-2zm0 4h16v2H8v-2zm0 4h10v2H8v-2z" fill="white"/>
+          </svg>
+          <span class="brand-text">O'quv Markazi</span>
+        </a>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menyuni ochish/yopish">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list" role="menubar">
+          <li class="nav-item" role="none"><a href="#home" class="nav-link" role="menuitem">Bosh sahifa</a></li>
+          <li class="nav-item nav-item--dropdown" role="none">
+            <button class="nav-link nav-dropdown-toggle" type="button" role="menuitem" aria-expanded="false" aria-haspopup="true" aria-controls="courses-submenu">
+              Kurslar
+              <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="nav-submenu" id="courses-submenu" role="menu" aria-label="Kurslar pastki menyusi">
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Matematika</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Ingliz tili</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Tarix</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Kimyo</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Dasturlash asoslari</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Kompyuter grafikasi</a></li>
+              <li role="none"><a href="#courses" class="submenu-link" role="menuitem">Python</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" role="none"><a href="#students" class="nav-link" role="menuitem">O'quvchilarimiz</a></li>
+          <li class="nav-item" role="none"><a href="#about" class="nav-link" role="menuitem">Biz haqimizda</a></li>
+          <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem">Bog‘lanish</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="#contact" class="cta-button" role="button">
+            <span>Ro'yxatdan o'tish</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="nav-overlay" aria-hidden="true"></div>
+    </nav>
+  </header>
+
+  <!-- [Qolgan bo‘limlar – saqlangan] -->
+  <main class="main-content">
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>O'quv Markazi</h1>
+        <p>Zamonaviy ta'lim, professional o'qituvchilar va muvaffaqiyatli natijalar bilan.</p>
+        <div class="feature-grid">
+          <div class="feature"><h3>Sertifikat</h3><p>Kursni tugatgandan keyin rasmiy sertifikat</p></div>
+          <div class="feature"><h3>Amaliyot</h3><p>Real loyihalar bilan tajriba orttirish</p></div>
+          <div class="feature"><h3>O'qituvchilar</h3><p>5+ yillik tajribaga ega mutaxassislar</p></div>
+          <div class="feature"><h3>Qulay grafik</h3><p>Kechki va dam olish kunlari guruhlari</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="content-section">
+      <div class="container">
+        <h2>Bizning Kurslarimiz</h2>
+        <p>Har bir talaba uchun moslashtirilgan ta'lim dasturlari.</p>
+        <div class="services-grid" id="courses-container">
+          <!-- Kurslar JS orqali yuklanadi -->
+        </div>
+      </div>
+    </section>
+
+    <!-- [Qolgan bo‘limlar – saqlangan] -->
+    <section id="students" class="content-section">
+      <div class="container">
+        <h2>O'quvchilarimiz Muvaffaqiyati</h2>
+        <p>Bitiruvchilarimizning erishgan yutuqlari.</p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><div class="portfolio-image"><div class="placeholder-image">IELTS 7.5</div></div><h3>Aziza M.</h3><p>IELTS 7.5 ball oldi va Buyuk Britaniyada o'qishni boshladi.</p></div>
+          <div class="portfolio-item"><div class="portfolio-image"><div class="placeholder-image">Freelance</div></div><h3>Javlon T.</h3><p>Web dasturchi bo'ldi, Upwork’da $50/soat ishlaydi.</p></div>
+          <div class="portfolio-item"><div class="portfolio-image"><div class="placeholder-image">Universitet</div></div><h3>Dilnoza R.</h3><p>Matematika bo'yicha 100% natija, TDTU ga grant asosida o'qishga kirdi.</p></div>
+          <div class="portfolio-item"><div class="portfolio-image"><div class="placeholder-image">Dizayner</div></div><h3>Sardor K.</h3><p>Figma bo'yicha loyiha topshirdi, mahalliy kompaniyada dizayner bo'ldi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="content-section">
+      <div class="container">
+        <h2>Biz Haqimizda</h2>
+        <p>5 yildan beri sifatli ta'lim beramiz.</p>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Bizning Maqsadimiz</h3>
+            <p>Har bir o'quvchiga zamonaviy bilim va amaliy ko'nikmalar berish. Bizning bitiruvchilarimiz ish topadi, grant yutadi va muvaffaqiyatli bo'ladi.</p>
+            <h3>Nimaga Bizni Tanlashadi?</h3>
+            <ul><li>Professional o'qituvchilar</li><li>Kichik guruhlar (6-8 kishi)</li><li>Amaliy mashg'ulotlar</li><li>Rasmiy sertifikat</li></ul>
+          </div>
+          <div class="about-stats">
+            <div class="stat"><h4>500+</h4><p>Bitiruvchilar</p></div>
+            <div class="stat"><h4>95%</h4><p>Muvaffaqiyat</p></div>
+            <div class="stat"><h4>5+</h4><p>Yillik tajriba</p></div>
+            <div class="stat"><h4>24/7</h4><p>Maslahat</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <div class="container">
+        <h2>Biz Bilan Bog‘laning</h2>
+        <p>Ro'yxatdan o'tish yoki savollar uchun yozing.</p>
+        <div class="contact-content">
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Ism</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="course">Qaysi kurs?</label>
+                <select id="course" name="course" required>
+                  <option value="">Tanlang</option>
+                  <option>Matematika</option>
+                  <option>Ingliz tili</option>
+                  <option>Tarix</option>
+                  <option>Kimyo</option>
+                  <option>Dasturlash asoslari</option>
+                  <option>Kompyuter grafikasi</option>
+                  <option>Python</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Xabar</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submit-btn"><span>Yuborish</span></button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <div class="info-item"><h3>Email</h3><p>info@oquvmarkazi.uz</p></div>
+            <div class="info-item"><h3>Telefon</h3><p>+998 99 123 45 67</p></div>
+            <div class="info-item"><h3>Manzil</h3><p>Chilonzor tumani<br>Yunus Rajabiy ko'chasi 25-uy</p></div>
+            <div class="info-item"><h3>Ish vaqti</h3><p>Dushanba - Juma: 9:00 - 21:00<br>Shanba: 10:00 - 18:00</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- [Navigatsiya JS – saqlangan] -->
+  <script>
+    class OquvMarkaziNav { /* [to‘liq kod] */ }
+    document.addEventListener('DOMContentLoaded', () => { new OquvMarkaziNav(); });
+  </script>
+
+  <!-- Kurslarni yuklash -->
+  <script>
+    async function loadCourses() {
+      try {
+        const response = await fetch('http://localhost:4000/api/courses');
+        const courses = await response.json();
+        const container = document.getElementById('courses-container');
+        container.innerHTML = '';
+        courses.forEach(course => {
+          const card = document.createElement('div');
+          card.className = 'service-card';
+          card.innerHTML = `
+            <div class="service-icon">Book</div>
+            <h3>${course.name}</h3>
+            <p>${course.description}</p>
+            <p><strong>Davomiyligi:</strong> ${course.duration}</p>
+            <p><strong>Narxi:</strong> ${course.price.toLocaleString()} so'm</p>
+            <p><strong>O'qituvchi:</strong> ${course.teacher}</p>
+            ${course.schedule ? `<p><small>${course.schedule}</small></p>` : ''}
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById('courses-container').innerHTML = '<p style="color: #f5576c; text-align: center;">Kurslar yuklanmadi.</p>';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadCourses);
+  </script>
+
+  <!-- Forma yuborish -->
+  <script>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        course: document.getElementById('course').value,
+        message: document.getElementById('message').value.trim()
+      };
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Yuborilmoqda...</span>';
+      try {
+        const response = await fetch('http://localhost:4000/api/students', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert('Ariza muvaffaqiyatli yuborildi!');
+          form.reset();
+        } else {
+          alert('Xato: ' + (result.error || 'Yuborilmadi'));
+        }
+      } catch (err) {
+        alert('Internet aloqasi yo‘q.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Yuborish</span>';
+      }
+    });
+  </script>
+</body>
+</html>

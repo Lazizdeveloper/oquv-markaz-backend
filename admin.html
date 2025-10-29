@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel | O'quv Markazi</title>
+  <style>
+    :root { --primary: #667eea; --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #475569; }
+    th { background: #334155; }
+    .status { padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.875rem; }
+    .status.yangi { background: #f093fb; color: #000; }
+    .status.qabul { background: #86efac; color: #000; }
+    .status.rad { background: #f87171; color: #fff; }
+    button { background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin: 0.25rem; }
+    button:hover { background: #5a6fd8; }
+    .actions { display: flex; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Panel — Arizalar</h1>
+    <p><strong>Admin ID:</strong> <input type="text" id="admin-id" placeholder="6186454238" style="padding: 0.5rem; border-radius: 6px; border: 1px solid #475569;" /></p>
+    <button onclick="loadStudents()">Yuklash</button>
+    <table id="students-table" style="display: none; margin-top: 1rem;">
+      <thead>
+        <tr>
+          <th>Ism</th>
+          <th>Telefon</th>
+          <th>Kurs</th>
+          <th>Xabar</th>
+          <th>Status</th>
+          <th>Sana</th>
+          <th>Harakat</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function loadStudents() {
+      const adminId = document.getElementById('admin-id').value.trim();
+      if (adminId !== '6186454238') { alert('Ruxsat etilmagan!'); return; }
+      try {
+        const res = await fetch('http://localhost:4000/api/students', { headers: { 'admin-id': adminId } });
+        const students = await res.json();
+        const tbody = document.querySelector('#students-table tbody');
+        const table = document.getElementById('students-table');
+        tbody.innerHTML = '';
+        table.style.display = 'table';
+        students.forEach(s => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${s.name}</td>
+            <td>${s.phone}</td>
+            <td>${s.course}</td>
+            <td>${s.message || '-'}</td>
+            <td><span class="status ${s.status}">${s.status}</span></td>
+            <td>${new Date(s.createdAt).toLocaleString('uz-UZ')}</td>
+            <td class="actions">
+              <button onclick="updateStatus('${s._id}', 'qabul qilindi')" ${s.status !== 'yangi' ? 'disabled' : ''}>Qabul</button>
+              <button onclick="updateStatus('${s._id}', 'rad etildi')" ${s.status !== 'yangi' ? 'disabled' : ''}>Rad</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) { alert('Xato: ' + err.message); }
+    }
+    async function updateStatus(id, status) {
+      const adminId = document.getElementById('admin-id').value.trim();
+      if (adminId !== '6186454238') return;
+      await fetch(`http://localhost:4000/api/students/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'admin-id': adminId },
+        body: JSON.stringify({ status })
+      });
+      loadStudents();
+    }
+  </script>
+</body>
+</html>
